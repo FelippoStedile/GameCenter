@@ -11,9 +11,6 @@
 		734D388B2A9D2CB700B42D43 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734D388A2A9D2CB700B42D43 /* ContentView.swift */; };
 		734D388D2A9D2CB800B42D43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 734D388C2A9D2CB800B42D43 /* Assets.xcassets */; };
 		734D38902A9D2CB800B42D43 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 734D388F2A9D2CB800B42D43 /* Preview Assets.xcassets */; };
-		734D389A2A9D2CB800B42D43 /* GameCenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734D38992A9D2CB800B42D43 /* GameCenterTests.swift */; };
-		734D38A42A9D2CB800B42D43 /* GameCenterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734D38A32A9D2CB800B42D43 /* GameCenterUITests.swift */; };
-		734D38A62A9D2CB800B42D43 /* GameCenterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734D38A52A9D2CB800B42D43 /* GameCenterUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,10 +37,7 @@
 		734D388C2A9D2CB800B42D43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		734D388F2A9D2CB800B42D43 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		734D38952A9D2CB800B42D43 /* GameCenterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameCenterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		734D38992A9D2CB800B42D43 /* GameCenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterTests.swift; sourceTree = "<group>"; };
 		734D389F2A9D2CB800B42D43 /* GameCenterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameCenterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		734D38A32A9D2CB800B42D43 /* GameCenterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterUITests.swift; sourceTree = "<group>"; };
-		734D38A52A9D2CB800B42D43 /* GameCenterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		734D38B22A9D2E5000B42D43 /* GameCenter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GameCenter.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,8 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				734D38872A9D2CB700B42D43 /* GameCenter */,
-				734D38982A9D2CB800B42D43 /* GameCenterTests */,
-				734D38A22A9D2CB800B42D43 /* GameCenterUITests */,
 				734D38862A9D2CB700B42D43 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -110,23 +102,6 @@
 				734D388F2A9D2CB800B42D43 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		734D38982A9D2CB800B42D43 /* GameCenterTests */ = {
-			isa = PBXGroup;
-			children = (
-				734D38992A9D2CB800B42D43 /* GameCenterTests.swift */,
-			);
-			path = GameCenterTests;
-			sourceTree = "<group>";
-		};
-		734D38A22A9D2CB800B42D43 /* GameCenterUITests */ = {
-			isa = PBXGroup;
-			children = (
-				734D38A32A9D2CB800B42D43 /* GameCenterUITests.swift */,
-				734D38A52A9D2CB800B42D43 /* GameCenterUITestsLaunchTests.swift */,
-			);
-			path = GameCenterUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,7 +243,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				734D389A2A9D2CB800B42D43 /* GameCenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,8 +250,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				734D38A42A9D2CB800B42D43 /* GameCenterUITests.swift in Sources */,
-				734D38A62A9D2CB800B42D43 /* GameCenterUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,7 +392,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GameCenter/Preview Content\"";
-				DEVELOPMENT_TEAM = UDTLAW243X;
+				DEVELOPMENT_TEAM = 2V5RBDFH46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -428,6 +400,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -450,7 +423,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GameCenter/Preview Content\"";
-				DEVELOPMENT_TEAM = UDTLAW243X;
+				DEVELOPMENT_TEAM = 2V5RBDFH46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -458,6 +431,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
