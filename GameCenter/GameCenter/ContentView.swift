@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @EnvironmentObject var gameCenterAuth: GameCenterAuthenticationService
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            if let view = gameCenterAuth.currentViewController {
+                UserAuthenticationView(vc: view)
+            }
+                
+            Text("carro")
         }
-        .padding()
     }
 }
 

@@ -11,6 +11,8 @@
 		734D388B2A9D2CB700B42D43 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734D388A2A9D2CB700B42D43 /* ContentView.swift */; };
 		734D388D2A9D2CB800B42D43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 734D388C2A9D2CB800B42D43 /* Assets.xcassets */; };
 		734D38902A9D2CB800B42D43 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 734D388F2A9D2CB800B42D43 /* Preview Assets.xcassets */; };
+		F9E397402A9D2FC7009175B3 /* GameCenterAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E3973F2A9D2FC7009175B3 /* GameCenterAuthenticationService.swift */; };
+		F9E397422A9D3056009175B3 /* UserAuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E397412A9D3056009175B3 /* UserAuthenticationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,8 @@
 		734D38952A9D2CB800B42D43 /* GameCenterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameCenterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		734D389F2A9D2CB800B42D43 /* GameCenterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameCenterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		734D38B22A9D2E5000B42D43 /* GameCenter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GameCenter.entitlements; sourceTree = "<group>"; };
+		F9E3973F2A9D2FC7009175B3 /* GameCenterAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterAuthenticationService.swift; sourceTree = "<group>"; };
+		F9E397412A9D3056009175B3 /* UserAuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,8 @@
 				734D38B22A9D2E5000B42D43 /* GameCenter.entitlements */,
 				734D38882A9D2CB700B42D43 /* GameCenterApp.swift */,
 				734D388A2A9D2CB700B42D43 /* ContentView.swift */,
+				F9E3973F2A9D2FC7009175B3 /* GameCenterAuthenticationService.swift */,
+				F9E397412A9D3056009175B3 /* UserAuthenticationView.swift */,
 				734D388C2A9D2CB800B42D43 /* Assets.xcassets */,
 				734D388E2A9D2CB800B42D43 /* Preview Content */,
 			);
@@ -235,7 +241,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				734D388B2A9D2CB700B42D43 /* ContentView.swift in Sources */,
+				F9E397422A9D3056009175B3 /* UserAuthenticationView.swift in Sources */,
 				734D38892A9D2CB700B42D43 /* GameCenterApp.swift in Sources */,
+				F9E397402A9D2FC7009175B3 /* GameCenterAuthenticationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

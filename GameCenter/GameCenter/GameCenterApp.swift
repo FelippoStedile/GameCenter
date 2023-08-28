@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct GameCenterApp: App {
+    
+    @StateObject var gameCenterAuth: GameCenterAuthenticationService = GameCenterAuthenticationService()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(gameCenterAuth)
         }
     }
 }
