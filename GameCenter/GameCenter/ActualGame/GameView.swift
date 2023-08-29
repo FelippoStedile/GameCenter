@@ -12,7 +12,12 @@ struct GameView: View {
     @StateObject var actualGame: ActualGame
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(String(actualGame.opponentGameData.deltaAngle ?? 500))
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    actualGame.sendData()
+                }
+            }
     }
 }
 
