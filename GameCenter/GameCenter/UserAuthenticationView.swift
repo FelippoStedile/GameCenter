@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Usado para mostrar as view controllers dentro do swift ui
 struct UserAuthenticationView: UIViewControllerRepresentable {
     typealias UIViewControllerType = UIViewController
     

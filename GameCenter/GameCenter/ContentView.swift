@@ -17,7 +17,7 @@ struct ContentView: View {
                 UserAuthenticationView(vc: view)
             }
                 
-            Text("carro")
+            Text(gameCenterAuth.isAuthenticated ?? false ? "Autenticado!" : "Não autenticado")
         }
     }
 }
