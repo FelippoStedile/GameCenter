@@ -12,12 +12,18 @@ struct GameView: View {
     @StateObject var actualGame: ActualGame
     
     var body: some View {
-        Text(String(actualGame.opponentGameData.deltaAngle ?? 500))
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    actualGame.sendData()
+        if let deltaAngle = actualGame.opponentGameData.deltaAngle {
+            Text("Angulo do seu oponente: \(deltaAngle)")
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        actualGame.sendData()
+                        print("enviou")
+                    }
                 }
-            }
+        }
+        else {
+            Text("JOGANDO!")
+        }
     }
 }
 

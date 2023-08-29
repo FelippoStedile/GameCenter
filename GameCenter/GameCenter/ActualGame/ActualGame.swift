@@ -12,7 +12,6 @@ import Combine
 final class ActualGame: NSObject, ObservableObject {
     
     var gameInstance: GKMatch
-    
     var opponentGameData: GameData = GameData() {
         didSet {
             self.currentDifference = selfScore - (opponentGameData.deltaAngle ?? 0)
@@ -41,6 +40,12 @@ final class ActualGame: NSObject, ObservableObject {
             self.selfScore = newValue
         }
         .store(in: &connections)
+        
+        Timer.publish(every: 0.1, on: .main, in: .default).sink { _ in
+            if self.currentGameOutcome == nil {
+                self.sendData()
+            }
+        }.store(in: &connections)
     }
 }
 
@@ -52,7 +57,7 @@ extension ActualGame: GKMatchDelegate {
         encoder.outputFormat = .xml
         
         do {
-            let data = try encoder.encode(GameData(deltaAngle: self.selfScore, outcome: nil, message: nil, matchName: nil))
+            let data = try encoder.encode(GameData(deltaAngle: self.selfScore))
             print("encodei")
             return data
         } catch let error {
@@ -74,7 +79,7 @@ extension ActualGame: GKMatchDelegate {
     }
     
     func sendData() {
-        if self.currentGameOutcome != nil {
+        if self.currentGameOutcome == nil {
             if let data = encodeMyData() {
                 do {
                     try self.gameInstance.sendData(toAllPlayers: data, with: .reliable)

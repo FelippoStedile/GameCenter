@@ -9,7 +9,4 @@ import Foundation
 
 struct GameData: Codable {
     var deltaAngle: Double?
-    var outcome: String?
-    var message: String?
-    var matchName: String?
 }
