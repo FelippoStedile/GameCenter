@@ -10,14 +10,31 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var gameCenterAuth: GameCenterAuthenticationService
+    @EnvironmentObject var spinService: CompassHeading
     
     var body: some View {
-        VStack {
-            if let view = gameCenterAuth.currentViewController {
-                ViewControllerRepresenter(vc: view)
-            }
+        NavigationStack {
+            VStack {
+                if let view = gameCenterAuth.currentViewController {
+                    ViewControllerRepresenter(vc: view)
+                }
                 
-            Text(gameCenterAuth.isAuthenticated.textDescription)
+                Text(gameCenterAuth.isAuthenticated.textDescription)
+                Text(String(spinService.numberOfSpins))
+                    .font(spinService.didChangeSpin ? .largeTitle : .title3)
+                    .rotationEffect(Angle(degrees:-1 * (spinService.trueHeading - spinService.offSet)))
+                if gameCenterAuth.isAuthenticated == .succeeded {
+                    NavigationLink(destination: MultiplayerScreen(realGame: RealGame())) {
+                        Text("Multiplayer")
+                            .font(.largeTitle)
+                            .padding()
+                            .background(
+                                Color.red
+                            )
+                            .cornerRadius(8)
+                    }
+                }
+            }
         }
     }
 }

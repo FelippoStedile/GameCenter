@@ -11,10 +11,16 @@ import GameKit
 final class GameCenterAuthenticationService: ObservableObject {
     var currentViewController: UIViewController?
     
-    @Published var isAuthenticated: GameCenterAuthenticationStatus = .loading
+    @Published var isAuthenticated: GameCenterAuthenticationStatus = .loading {
+        didSet {
+            if isAuthenticated == .succeeded {
+                // registra a si mesmo
+//                GKLocalPlayer.local.register(self)
+            }
+        }
+    }
     
     init() {
-        
         /// Funcao usada para verificar se o jogador está logado no GameCenter
         GKLocalPlayer.local.authenticateHandler = { vc, error in
             // Casos possíveis (sempre verificar o GKLocalPlayer.isAuthenticated):
