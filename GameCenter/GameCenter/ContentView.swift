@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var gameCenterAuth: GameCenterAuthenticationService
-    @EnvironmentObject var spinService: CompassHeading
     
     var body: some View {
         NavigationStack {
@@ -20,9 +19,7 @@ struct ContentView: View {
                 }
                 
                 Text(gameCenterAuth.isAuthenticated.textDescription)
-                Text(String(spinService.numberOfSpins))
-                    .font(spinService.didChangeSpin ? .largeTitle : .title3)
-                    .rotationEffect(Angle(degrees:-1 * (spinService.trueHeading - spinService.offSet)))
+    
                 if gameCenterAuth.isAuthenticated == .succeeded {
                     NavigationLink(destination: MultiplayerScreen(realGame: RealGame())) {
                         Text("Multiplayer")

@@ -11,13 +11,11 @@ import SwiftUI
 struct GameCenterApp: App {
     
     @StateObject var gameCenterAuth: GameCenterAuthenticationService = GameCenterAuthenticationService()
-    @StateObject var spinService: CompassHeading = CompassHeading()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(gameCenterAuth)
-                .environmentObject(spinService)
         }
     }
 }

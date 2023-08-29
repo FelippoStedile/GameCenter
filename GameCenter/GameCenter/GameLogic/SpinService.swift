@@ -42,6 +42,8 @@ class CompassHeading: NSObject, ObservableObject, CLLocationManagerDelegate {
             if leftStack >= 1 {
                 rightStack = max(rightStack - leftStack, 0)
             }
+            
+            biggestStack = max(leftStack, rightStack)
         }
     }
     
@@ -56,8 +58,12 @@ class CompassHeading: NSObject, ObservableObject, CLLocationManagerDelegate {
             if rightStack >= 1 {
                 leftStack = max(leftStack - rightStack, 0)
             }
+            
+            biggestStack = max(leftStack, rightStack)
         }
     }
+    
+    @Published var biggestStack: Double = 0
     
     private let locationManager: CLLocationManager
     
@@ -98,16 +104,16 @@ class CompassHeading: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
         
         // TODO: Multiplayer send this delta
-        print("delta: \(newHeading.trueHeading - self.degrees)")
+        
         
         
         // base case
         if newHeading.trueHeading > self.degrees {
             rightStack += abs(newHeading.trueHeading - self.degrees)
-            print(rightStack)
+            
         } else {
             leftStack += abs(newHeading.trueHeading - self.degrees)
-            print(leftStack)
+            
         }
         
         self.degrees = newHeading.trueHeading

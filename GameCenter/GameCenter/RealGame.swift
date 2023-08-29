@@ -10,6 +10,7 @@ import GameKit
 
 final class RealGame: NSObject, ObservableObject {
     
+    @Published var gameView: GameView?
     @Published var vc: UIViewController? = nil
     @Published var gameState: GameState = .onLobby
     
@@ -56,6 +57,9 @@ extension RealGame: GKLocalPlayerListener {
         self.vc = nil
         print("passou aqui")
         self.gameState = .playing
+        let actualGame = ActualGame(match: match)
+        match.delegate = actualGame
+        self.gameView = GameView(actualGame: actualGame)
     }
 }
 
