@@ -14,10 +14,10 @@ struct ContentView: View {
     var body: some View {
         VStack {
             if let view = gameCenterAuth.currentViewController {
-                UserAuthenticationView(vc: view)
+                ViewControllerRepresenter(vc: view)
             }
                 
-            Text(gameCenterAuth.isAuthenticated ?? false ? "Autenticado!" : "Não autenticado")
+            Text(gameCenterAuth.isAuthenticated.textDescription)
         }
     }
 }

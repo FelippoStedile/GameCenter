@@ -11,7 +11,7 @@ import GameKit
 final class GameCenterAuthenticationService: ObservableObject {
     var currentViewController: UIViewController?
     
-    @Published var isAuthenticated: Bool? = nil
+    @Published var isAuthenticated: GameCenterAuthenticationStatus = .loading
     
     init() {
         
@@ -22,7 +22,7 @@ final class GameCenterAuthenticationService: ObservableObject {
                 // 2 - Se o usuário se recusar a logar (não criar uma conta ou se logar), isAuthenticated se torna false
             
             self.currentViewController = vc
-            self.isAuthenticated = GKLocalPlayer.local.isAuthenticated
+            self.isAuthenticated = GKLocalPlayer.local.isAuthenticated ? .succeeded : .failed
             
             if error != nil { return } // following code only runs when there is no error
             
