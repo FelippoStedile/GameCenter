@@ -14,17 +14,17 @@ struct GameView: View {
     var body: some View {
         if let deltaAngle = actualGame.opponentGameData.deltaAngle {
             Text("Angulo do seu oponente: \(deltaAngle)")
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        actualGame.sendData()
-                        print("enviou")
-                    }
-                }
         }
         else {
             Text("JOGANDO!")
         }
         Text("SELF SCORE: \(actualGame.selfScore)")
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    actualGame.sendData()
+                    print("enviou")
+                }
+            }
     }
 }
 

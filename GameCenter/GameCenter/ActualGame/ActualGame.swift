@@ -41,11 +41,15 @@ final class ActualGame: NSObject, ObservableObject {
         }
         .store(in: &connections)
         
-        Timer.publish(every: 0.1, on: .main, in: .default).sink { _ in
-            if self.currentGameOutcome == nil {
-                self.sendData()
+        Timer
+            .publish(every: 0.1, on: .main, in: .default)
+            .autoconnect()
+            .sink { _ in
+                if self.currentGameOutcome == nil {
+                    self.sendData()
+                }
             }
-        }.store(in: &connections)
+            .store(in: &connections)
     }
 }
 
@@ -57,7 +61,7 @@ extension ActualGame: GKMatchDelegate {
         encoder.outputFormat = .xml
         
         do {
-            let data = try encoder.encode(GameData(deltaAngle: self.selfScore))
+            let data = try encoder.encode(GameData(deltaAngle: self.selfScore + (360 * Double(spinService.numberOfSpins))))
             print("encodei")
             return data
         } catch let error {
