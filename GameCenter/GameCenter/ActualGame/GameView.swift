@@ -24,6 +24,7 @@ struct GameView: View {
         else {
             Text("JOGANDO!")
         }
+        Text("SELF SCORE: \(actualGame.selfScore)")
     }
 }
 
