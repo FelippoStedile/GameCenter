@@ -98,7 +98,13 @@ extension ActualGame: GKMatchDelegate {
     func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer) {
         if let decodedInfo = decodeData(data: data) {
             self.opponentGameData = decodedInfo
+            if ((Double(spinService.numberOfSpins) * 360) + self.selfScore) - (self.opponentGameData.deltaAngle ?? 0) >= 3600 {
+                self.currentGameOutcome = .win
+            } else if ((Double(spinService.numberOfSpins) * 360) + self.selfScore) - (self.opponentGameData.deltaAngle ?? 0) <= -3600 {
+                self.currentGameOutcome = .loss
+            }
             print("decodei")
         }
+        
     }
 }

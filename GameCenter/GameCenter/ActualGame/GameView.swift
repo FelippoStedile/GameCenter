@@ -12,8 +12,8 @@ struct GameView: View {
     @StateObject var actualGame: ActualGame
     
     var body: some View {
-        if let deltaAngle = actualGame.opponentGameData.deltaAngle {
-            Text("Angulo do seu oponente: \(deltaAngle)")
+        if let totalOpponentAngle = actualGame.opponentGameData.deltaAngle {
+            Text("Placar atual: \(actualGame.selfScore + (Double(actualGame.spinService.numberOfSpins) * 360) - totalOpponentAngle)")
         }
         else {
             Text("JOGANDO!")
