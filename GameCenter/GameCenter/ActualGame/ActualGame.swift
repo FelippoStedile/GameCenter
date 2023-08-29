@@ -61,7 +61,8 @@ extension ActualGame: GKMatchDelegate {
         encoder.outputFormat = .xml
         
         do {
-            let data = try encoder.encode(GameData(deltaAngle: self.selfScore + (360 * Double(spinService.numberOfSpins))))
+            let data = try encoder.encode(GameData(deltaAngle: self.selfScore ))
+                                          
             print("encodei")
             return data
         } catch let error {
@@ -98,9 +99,9 @@ extension ActualGame: GKMatchDelegate {
     func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer) {
         if let decodedInfo = decodeData(data: data) {
             self.opponentGameData = decodedInfo
-            if ((Double(spinService.numberOfSpins) * 360) + self.selfScore) - (self.opponentGameData.deltaAngle ?? 0) >= 3600 {
+            if (self.selfScore) - (self.opponentGameData.deltaAngle ?? 0) >= 3600 {
                 self.currentGameOutcome = .win
-            } else if ((Double(spinService.numberOfSpins) * 360) + self.selfScore) - (self.opponentGameData.deltaAngle ?? 0) <= -3600 {
+            } else if (self.selfScore) - (self.opponentGameData.deltaAngle ?? 0) <= -3600 {
                 self.currentGameOutcome = .loss
             }
             print("decodei")

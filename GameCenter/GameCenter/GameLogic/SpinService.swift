@@ -43,7 +43,7 @@ class CompassHeading: NSObject, ObservableObject, CLLocationManagerDelegate {
                 rightStack = max(rightStack - leftStack, 0)
             }
             
-            biggestStack = max(leftStack, rightStack)
+            biggestStack = max(leftStack, rightStack) + (Double(numberOfSpins) * 360)
         }
     }
     
@@ -59,7 +59,7 @@ class CompassHeading: NSObject, ObservableObject, CLLocationManagerDelegate {
                 leftStack = max(leftStack - rightStack, 0)
             }
             
-            biggestStack = max(leftStack, rightStack)
+            biggestStack = max(leftStack, rightStack) + (Double(numberOfSpins) * 360)
         }
     }
     
