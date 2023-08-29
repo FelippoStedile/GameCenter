@@ -53,6 +53,7 @@ extension ActualGame: GKMatchDelegate {
         
         do {
             let data = try encoder.encode(GameData(deltaAngle: self.selfScore, outcome: nil, message: nil, matchName: nil))
+            print("encodei")
             return data
         } catch let error {
             print(error.localizedDescription)
@@ -77,6 +78,7 @@ extension ActualGame: GKMatchDelegate {
             if let data = encodeMyData() {
                 do {
                     try self.gameInstance.sendData(toAllPlayers: data, with: .reliable)
+                    print("mandei dados")
                 } catch let error {
                     print(error.localizedDescription)
                 }
