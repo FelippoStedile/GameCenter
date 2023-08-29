@@ -14,6 +14,8 @@ struct MultiplayerScreen: View {
     var body: some View {
         if let vc = realGame.vc {
             ViewControllerRepresenter(vc: vc)
+        } else if let view = realGame.gameView {
+            view
         } else {
             switch realGame.gameState {
             case .canceled:
