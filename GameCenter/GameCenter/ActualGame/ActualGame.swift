@@ -100,11 +100,12 @@ extension ActualGame: GKMatchDelegate {
         if let decodedInfo = decodeData(data: data) {
             self.opponentGameData = decodedInfo
             if (self.selfScore) - (self.opponentGameData.deltaAngle ?? 0) >= 3600 {
+                sendData()
                 self.currentGameOutcome = .win
             } else if (self.selfScore) - (self.opponentGameData.deltaAngle ?? 0) <= -3600 {
+                sendData()
                 self.currentGameOutcome = .loss
             }
-            sendData()
             print("decodei")
         }
         
