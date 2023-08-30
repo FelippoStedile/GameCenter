@@ -10,12 +10,15 @@ import GameKit
 
 final class GameCenterAuthenticationService: ObservableObject {
     var currentViewController: UIViewController?
+    var achievements: Achievements?
     
     @Published var isAuthenticated: GameCenterAuthenticationStatus = .loading {
         didSet {
             if isAuthenticated == .succeeded {
+                achievements = Achievements()
                 // registra a si mesmo
-//                GKLocalPlayer.local.register(self)
+                //                GKLocalPlayer.local.register(self)
+                
             }
         }
     }
