@@ -17,8 +17,8 @@ final class RealGame: NSObject, ObservableObject {
     override init() {
         super.init()
         let request = GKMatchRequest()
-        request.minPlayers = 1//
-        request.maxPlayers = 1//
+        request.minPlayers = 2//
+        request.maxPlayers = 2//
         if let viewController = GKMatchmakerViewController(matchRequest: request) {
             viewController.matchmakerDelegate = self
             self.vc = viewController
