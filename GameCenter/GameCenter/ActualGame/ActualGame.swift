@@ -108,6 +108,5 @@ extension ActualGame: GKMatchDelegate {
             }
             print("decodei")
         }
-        
     }
 }
