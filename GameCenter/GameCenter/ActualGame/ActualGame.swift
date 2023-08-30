@@ -104,6 +104,7 @@ extension ActualGame: GKMatchDelegate {
             } else if (self.selfScore) - (self.opponentGameData.deltaAngle ?? 0) <= -3600 {
                 self.currentGameOutcome = .loss
             }
+            sendData()
             print("decodei")
         }
         
