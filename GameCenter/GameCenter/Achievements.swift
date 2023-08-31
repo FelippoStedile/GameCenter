@@ -10,12 +10,18 @@ import GameKit
 
 class Achievements{
     
+    static var achievementService: Achievements = Achievements()
     var achievementIDs: [String] = ["victorySpin1", "100Spins2"]
-
     var achievementsToReport: [GKAchievement] = []
     
     
-    init(){
+//    init(){
+//
+//
+//        //print("fiz isso aqui")
+//    }
+    
+    func loadAchievements(){
         GKAchievement.loadAchievements(completionHandler: { [self] (achievements: [GKAchievement]?, error: Error?) in
             
             for achievementID in achievementIDs {
@@ -33,7 +39,6 @@ class Achievements{
                 }
             }
         })
-        //print("fiz isso aqui")
     }
     
     func reportProgress(){
