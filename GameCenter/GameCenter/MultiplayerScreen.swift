@@ -27,9 +27,6 @@ struct MultiplayerScreen: View {
                     })
                 case .playing:
                     playingScreen
-                    Button("Go Back", action: {
-                        presentationMode.wrappedValue.dismiss()
-                    })
                 default:
                     Text("outra coisa \(realGame.gameState.hashValue)")
                     Button("Go Back", action: {
@@ -38,8 +35,6 @@ struct MultiplayerScreen: View {
                 }
             }
         }
-        
-        .navigationBarBackButtonHidden()
     }
     
     var canceledScreen: some View {

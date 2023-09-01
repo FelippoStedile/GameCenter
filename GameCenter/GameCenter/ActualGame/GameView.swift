@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GameView: View {
-    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var actualGame: ActualGame
     var turns: Int = 0
     
@@ -18,7 +18,14 @@ struct GameView: View {
                 Rectangle()
                     .ignoresSafeArea()
                     .foregroundColor(.purple)
-                Text(outcome == .win ? "YOU WIN!" : "YOU LOSE!")
+                
+                VStack{
+                    Text(outcome == .win ? "YOU WIN!" : "YOU LOSE!")
+                    
+                    Button("Go Back", action: {
+                        presentationMode.wrappedValue.dismiss()
+                    })
+                }
             } else {
                 Rectangle()
                     .ignoresSafeArea()

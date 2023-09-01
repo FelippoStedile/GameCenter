@@ -11,7 +11,7 @@ import GameKit
 struct ContentView: View {
     
     init(){
-        GKAccessPoint.shared.location = .topLeading
+        GKAccessPoint.shared.location = .topTrailing
         GKAccessPoint.shared.isActive = true
     }
     
@@ -61,7 +61,7 @@ struct ContentView: View {
                 )
                 .cornerRadius(8)
         }
-        .navigationBarBackButtonHidden()
+        //.navigationBarBackButtonHidden()
     }
     
 }
