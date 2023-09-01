@@ -39,8 +39,7 @@ final class ActualGame: NSObject, ObservableObject {
         spinService.$biggestStack.sink { newValue in
             self.selfScore = newValue
             if self.selfScore >= 36000 {//n testado, só fé
-                Achievements.achievementService.achievementsToReport[1].percentComplete = 100
-                Achievements.achievementService.reportProgress()
+                Achievements.achievementService.completedAchievement(ID: "100Spins2")
             }
         }
         .store(in: &connections)
@@ -106,8 +105,7 @@ extension ActualGame: GKMatchDelegate {
             if (self.selfScore) - (self.opponentGameData.deltaAngle ?? 0) >= 3600 {
                 sendData()
                 self.currentGameOutcome = .win
-                Achievements.achievementService.achievementsToReport[0].percentComplete = 100
-                Achievements.achievementService.reportProgress()
+                Achievements.achievementService.completedAchievement(ID: "victorySpin1")
             } else if (self.selfScore) - (self.opponentGameData.deltaAngle ?? 0) <= -3600 {
                 sendData()
                 self.currentGameOutcome = .loss

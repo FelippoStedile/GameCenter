@@ -41,6 +41,14 @@ class Achievements{
         })
     }
     
+    func completedAchievement(ID: String){
+        achievementsToReport.first(where: { $0.identifier == ID})?.percentComplete = 100
+        var achievement = achievementsToReport.first(where: { $0.identifier == ID})
+        achievement?.showsCompletionBanner = true
+        
+        Achievements.achievementService.reportProgress()
+    }
+    
     func reportProgress(){
         GKAchievement.report(achievementsToReport, withCompletionHandler: {(error: Error?) in
             if error != nil {
