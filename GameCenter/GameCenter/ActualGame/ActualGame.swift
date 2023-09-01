@@ -15,6 +15,14 @@ final class ActualGame: NSObject, ObservableObject {
     var opponentGameData: GameData = GameData() {
         didSet {
             self.currentDifference = selfScore - (opponentGameData.deltaAngle ?? 0)
+            if currentDifference <= -1800 && !Achievements.achievementService.combackIsOn{
+                Achievements.achievementService.combackIsOn = true
+                Achievements.achievementService.setToValue(ID: "Comeback3", value: 50.0)
+            } else {
+                if currentDifference <= -3240 && !Achievements.achievementService.dreamComebackIsOn {
+                    Achievements.achievementService.dreamComebackIsOn = true
+                }
+            }
         }
     }
     
@@ -106,6 +114,12 @@ extension ActualGame: GKMatchDelegate {
                 sendData()
                 self.currentGameOutcome = .win
                 Achievements.achievementService.completedAchievement(ID: "victorySpin1")
+                if Achievements.achievementService.combackIsOn {
+                    Achievements.achievementService.completedAchievement(ID: "Comeback3")
+                    if Achievements.achievementService.dreamComebackIsOn {
+                        Achievements.achievementService.completedAchievement(ID: "ComebackDreams4")
+                    }
+                }
             } else if (self.selfScore) - (self.opponentGameData.deltaAngle ?? 0) <= -3600 {
                 sendData()
                 self.currentGameOutcome = .loss

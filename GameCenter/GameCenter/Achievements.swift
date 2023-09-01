@@ -11,8 +11,10 @@ import GameKit
 class Achievements{
     
     static var achievementService: Achievements = Achievements()
-    var achievementIDs: [String] = ["victorySpin1", "100Spins2"]
+    var achievementIDs: [String] = ["victorySpin1", "100Spins2", "Comeback3", "ComebackDreams4"]
     var achievementsToReport: [GKAchievement] = []
+    var combackIsOn: Bool = false
+    var dreamComebackIsOn: Bool = false
     
     
 //    init(){
@@ -39,6 +41,14 @@ class Achievements{
                 }
             }
         })
+    }
+    
+    func setToValue(ID: String, value: Double){
+        achievementsToReport.first(where: { $0.identifier == ID})?.percentComplete = value
+    }
+    
+    func addProgress(ID: String, progress: Double) {
+        achievementsToReport.first(where: { $0.identifier == ID})?.percentComplete += progress
     }
     
     func completedAchievement(ID: String){
