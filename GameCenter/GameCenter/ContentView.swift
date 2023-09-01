@@ -6,8 +6,14 @@
 //
 
 import SwiftUI
+import GameKit
 
 struct ContentView: View {
+    
+    init(){
+        GKAccessPoint.shared.location = .topLeading
+        GKAccessPoint.shared.isActive = true
+    }
     
     @EnvironmentObject var gameCenterAuth: GameCenterAuthenticationService
     
@@ -43,6 +49,7 @@ struct ContentView: View {
     }
     
     var suceeddedScreen: some View {
+        
         NavigationLink(destination: MultiplayerScreen(realGame: RealGame())) {
             Text("Multiplayer")
                 .font(.largeTitle)
