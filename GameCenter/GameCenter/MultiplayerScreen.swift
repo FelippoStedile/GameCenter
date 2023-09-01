@@ -10,22 +10,36 @@ import SwiftUI
 struct MultiplayerScreen: View {
     
     @StateObject var realGame: RealGame
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
-        if let vc = realGame.vc {
-            ViewControllerRepresenter(vc: vc)
-        } else if let view = realGame.gameView {
-            view
-        } else {
-            switch realGame.gameState {
-            case .canceled:
-                canceledScreen
-            case .playing:
-                playingScreen
-            default:
-                Text("outra coisa \(realGame.gameState.hashValue)")
+        Group {
+            if let vc = realGame.vc {
+                ViewControllerRepresenter(vc: vc)
+            } else if let view = realGame.gameView {
+                view
+            } else {
+                switch realGame.gameState {
+                case .canceled:
+                    canceledScreen
+                    Button("Go Back", action: {
+                        presentationMode.wrappedValue.dismiss()
+                    })
+                case .playing:
+                    playingScreen
+                    Button("Go Back", action: {
+                        presentationMode.wrappedValue.dismiss()
+                    })
+                default:
+                    Text("outra coisa \(realGame.gameState.hashValue)")
+                    Button("Go Back", action: {
+                        presentationMode.wrappedValue.dismiss()
+                    })
+                }
             }
         }
+        
+        .navigationBarBackButtonHidden()
     }
     
     var canceledScreen: some View {

@@ -18,26 +18,43 @@ struct ContentView: View {
                     ViewControllerRepresenter(vc: view)
                 }
                 
-                Text(gameCenterAuth.isAuthenticated.textDescription)
+                switch gameCenterAuth.isAuthenticated {
+                case .failed:
+                    failedScreen
+                case .loading:
+                    loadingScreen
+                case .succeeded:
+                    suceeddedScreen
+                }
     
                 if gameCenterAuth.isAuthenticated == .succeeded {
-                    NavigationLink(destination: MultiplayerScreen(realGame: RealGame())) {
-                        Text("Multiplayer")
-                            .font(.largeTitle)
-                            .padding()
-                            .background(
-                                Color.red
-                            )
-                            .cornerRadius(8)
-                    }
+                    
                 }
             }
         }
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    var loadingScreen: some View {
+        ProgressView()
     }
+    
+    var failedScreen: some View {
+        Text("Failed to login to the Game Center. Unable to play online.")
+    }
+    
+    var suceeddedScreen: some View {
+        NavigationLink(destination: MultiplayerScreen(realGame: RealGame())) {
+            Text("Multiplayer")
+                .font(.largeTitle)
+                .foregroundColor(Color.primary)
+                .colorInvert()
+                .padding()
+                .background(
+                    Color.primary
+                )
+                .cornerRadius(8)
+        }
+        .navigationBarBackButtonHidden()
+    }
+    
 }
