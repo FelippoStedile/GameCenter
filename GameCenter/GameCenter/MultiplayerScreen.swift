@@ -35,6 +35,7 @@ struct MultiplayerScreen: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden()
     }
     
     var canceledScreen: some View {

@@ -49,6 +49,10 @@ final class ActualGame: NSObject, ObservableObject {
             if self.selfScore >= 36000 {//n testado, só fé
                 Achievements.achievementService.completedAchievement(ID: "100Spins2")
             }
+            print("audio chat active: \(self.gameInstance.voiceChat(withName: "spinChannel")?.players)")
+            if !(self.gameInstance.voiceChat(withName: "spinChannel")?.isActive ?? true)  {
+                self.gameInstance.voiceChat(withName: "spinChannel")?.isActive = true
+            }
         }
         .store(in: &connections)
         
@@ -74,7 +78,7 @@ extension ActualGame: GKMatchDelegate {
         do {
             let data = try encoder.encode(GameData(deltaAngle: self.selfScore ))
                                           
-            print("encodei")
+            
             return data
         } catch let error {
             print(error.localizedDescription)
@@ -99,7 +103,6 @@ extension ActualGame: GKMatchDelegate {
             if let data = encodeMyData() {
                 do {
                     try self.gameInstance.sendData(toAllPlayers: data, with: .reliable)
-                    print("mandei dados")
                 } catch let error {
                     print(error.localizedDescription)
                 }
@@ -124,7 +127,7 @@ extension ActualGame: GKMatchDelegate {
                 sendData()
                 self.currentGameOutcome = .loss
             }
-            print("decodei")
+            
         }
     }
 }
