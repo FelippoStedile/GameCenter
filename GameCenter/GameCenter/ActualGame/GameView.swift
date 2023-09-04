@@ -34,6 +34,18 @@ struct GameView: View {
                         green: (max(actualGame.currentDifference, 0) / 3600),
                         blue: max(0, (360 - abs(actualGame.currentDifference))/360)))
             }
+            HStack{
+                Button("Mute") {
+                    if let player = actualGame.voiceChat?.players.first{
+                        actualGame.voiceChat?.setPlayer(player, muted: true)
+                    }
+                }
+                Button("Unmute") {
+                    if let player = actualGame.voiceChat?.players.first{
+                        actualGame.voiceChat?.setPlayer(player, muted: false)
+                    }
+                }
+            }
 //            VStack {
 //                if let totalOpponentAngle = actualGame.opponentGameData.deltaAngle {
 //                    let score = actualGame.selfScore - totalOpponentAngle//
