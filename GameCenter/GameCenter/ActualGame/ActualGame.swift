@@ -52,6 +52,8 @@ final class ActualGame: NSObject, ObservableObject {
             print("audio chat active: \(self.gameInstance.voiceChat(withName: "spinChannel")?.players)")
             if !(self.gameInstance.voiceChat(withName: "spinChannel")?.isActive ?? true)  {
                 self.gameInstance.voiceChat(withName: "spinChannel")?.isActive = true
+                self.gameInstance.voiceChat(withName: "spinChannel")?.start()
+                print("audio nao estava ativo")
             }
         }
         .store(in: &connections)
