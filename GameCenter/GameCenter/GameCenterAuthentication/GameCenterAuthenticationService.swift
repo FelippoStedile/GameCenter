@@ -7,6 +7,7 @@
 
 import Foundation
 import GameKit
+import AVFAudio
 
 final class GameCenterAuthenticationService: ObservableObject {
     var currentViewController: UIViewController?
@@ -18,6 +19,18 @@ final class GameCenterAuthenticationService: ObservableObject {
                 Achievements.achievementService.loadAchievements()
                 // registra a si mesmo
                 //                GKLocalPlayer.local.register(self)
+                
+                // inicia sessao de audio
+                do {
+                    let audioSession = AVAudioSession.sharedInstance()
+
+                    try audioSession.setActive(true, options: [])
+                    print("AUDIO SUCCESS")
+                }
+                catch {
+                    print("ERROR WITH AUDIO")
+                    return
+                }
                 
             }
         }

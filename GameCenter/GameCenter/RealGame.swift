@@ -59,6 +59,12 @@ extension RealGame: GKLocalPlayerListener {
         self.gameState = .playing
         let actualGame = ActualGame(match: match)
         match.delegate = actualGame
+        
+        var voiceChat = match.voiceChat(withName: "chat")
+        voiceChat?.isActive = true
+        voiceChat?.volume = 1
+        voiceChat?.start()
+        
         self.gameView = GameView(actualGame: actualGame)
     }
 }
