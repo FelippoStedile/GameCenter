@@ -24,7 +24,7 @@ final class GameCenterAuthenticationService: ObservableObject {
                 do {
                     let audioSession = AVAudioSession.sharedInstance()
 
-                    try audioSession.setActive(true, options: [])
+                    try audioSession.setActive(true)
                     print("AUDIO SUCCESS")
                 }
                 catch {

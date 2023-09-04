@@ -11,6 +11,7 @@ import Combine
 
 final class ActualGame: NSObject, ObservableObject {
     
+    var voiceChat: GKVoiceChat?
     var gameInstance: GKMatch
     var opponentGameData: GameData = GameData() {
         didSet {
@@ -32,7 +33,13 @@ final class ActualGame: NSObject, ObservableObject {
         }
     }
     
-    @Published var currentGameOutcome: GameOutcomes? = nil
+    @Published var currentGameOutcome: GameOutcomes? = nil {
+        didSet {
+            if currentGameOutcome == .win {
+                self.gameInstance.voiceChat(withName: "main")?.stop()
+            }
+        }
+    }
     
     // represents the current score offset
     @Published var currentDifference: Double = 0
@@ -43,17 +50,31 @@ final class ActualGame: NSObject, ObservableObject {
     init(match: GKMatch) {
         self.gameInstance = match
         super.init()
+        self.voiceChat = gameInstance.voiceChat(withName: "main")
+        voiceChat?.playerVoiceChatStateDidChangeHandler = { player, state in
+            switch state {
+            case .connected:
+                print("audio \(player.alias) connected")
+            case .connecting:
+                print("audio \(player.alias) connecting")
+            case .disconnected:
+                print("audio \(player.alias) disconnected")
+            case .silent:
+                print("audio \(player.alias) is silent")
+            case .speaking:
+                print("audio silence, \(player.alias) is speaking")
+            default:
+                print("audio uncovered case \(state)")
+            }
+        }
+        self.voiceChat?.start()
+        self.voiceChat?.volume = 0.5
+        self.voiceChat?.isActive = true
         
         spinService.$biggestStack.sink { newValue in
             self.selfScore = newValue
             if self.selfScore >= 36000 {//n testado, só fé
                 Achievements.achievementService.completedAchievement(ID: "100Spins2")
-            }
-            print("audio chat active: \(self.gameInstance.voiceChat(withName: "spinChannel")?.players)")
-            if !(self.gameInstance.voiceChat(withName: "spinChannel")?.isActive ?? true)  {
-                self.gameInstance.voiceChat(withName: "spinChannel")?.isActive = true
-                self.gameInstance.voiceChat(withName: "spinChannel")?.start()
-                print("audio nao estava ativo")
             }
         }
         .store(in: &connections)
