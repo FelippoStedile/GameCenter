@@ -35,9 +35,9 @@ final class ActualGame: NSObject, ObservableObject {
     
     @Published var currentGameOutcome: GameOutcomes? = nil {
         didSet {
-            if currentGameOutcome == .win {
-                self.gameInstance.voiceChat(withName: "main")?.stop()
-            }
+            
+            voiceChat?.stop()
+            
         }
     }
     
@@ -68,7 +68,7 @@ final class ActualGame: NSObject, ObservableObject {
             }
         }
         self.voiceChat?.start()
-        self.voiceChat?.volume = 0.5
+        self.voiceChat?.volume = 1
         self.voiceChat?.isActive = true
         
         spinService.$biggestStack.sink { newValue in
