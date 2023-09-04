@@ -61,9 +61,25 @@ extension RealGame: GKLocalPlayerListener {
         match.delegate = actualGame
         
         var voiceChat = match.voiceChat(withName: "chat")
+        voiceChat?.start()
         voiceChat?.isActive = true
         voiceChat?.volume = 1
-        voiceChat?.start()
+        voiceChat?.playerVoiceChatStateDidChangeHandler = { player, state in
+            switch state {
+            case .connected:
+                print("\(player.alias) connected")
+            case .connecting:
+                print("\(player.alias) connecting")
+            case .disconnected:
+                print("\(player.alias) disconnected")
+            case .silent:
+                print("\(player.alias) is silent")
+            case .speaking:
+                print("silence, \(player.alias) is speaking")
+            default:
+                print("uncovered case \(state)")
+            }
+        }
         
         self.gameView = GameView(actualGame: actualGame)
     }
