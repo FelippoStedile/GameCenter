@@ -36,14 +36,10 @@ struct GameView: View {
             }
             HStack{
                 Button("Mute") {
-                    if let player = actualGame.voiceChat?.players.first{
-                        actualGame.voiceChat?.setPlayer(player, muted: true)
-                    }
+                    actualGame.voiceChat!.volume = 0
                 }
                 Button("Unmute") {
-                    if let player = actualGame.voiceChat?.players.first{
-                        actualGame.voiceChat?.setPlayer(player, muted: false)
-                    }
+                    actualGame.voiceChat!.volume = 0.5
                 }
             }
 //            VStack {
