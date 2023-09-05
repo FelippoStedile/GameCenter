@@ -68,7 +68,7 @@ final class ActualGame: NSObject, ObservableObject {
             }
         }
         self.voiceChat?.start()
-        self.voiceChat?.volume = 1
+        self.voiceChat?.volume = 0
         self.voiceChat?.isActive = true
         
         spinService.$biggestStack.sink { newValue in

@@ -39,7 +39,7 @@ struct GameView: View {
                     actualGame.voiceChat!.volume = 0
                 }
                 Button("Unmute") {
-                    actualGame.voiceChat!.volume = 0.5
+                    actualGame.voiceChat!.volume = 1
                 }
             }
 //            VStack {
