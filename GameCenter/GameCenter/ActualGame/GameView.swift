@@ -20,11 +20,24 @@ struct GameView: View {
                     .foregroundColor(.purple)
                 
                 VStack{
+                    
+                    Spacer()
                     Text(outcome == .win ? "YOU WIN!" : "YOU LOSE!")
                     
                     Button("Go Back", action: {
                         presentationMode.wrappedValue.dismiss()
                     })
+                    Spacer()
+                    HStack{
+                        Button("Mute") {
+                            actualGame.voiceChat!.volume = 0
+                        }
+                        Button("Unmute") {
+                            actualGame.voiceChat!.volume = 1
+                        }
+                    }
+                    Spacer()
+                    
                 }
             } else {
                 Rectangle()
@@ -33,14 +46,6 @@ struct GameView: View {
                         red: (min(actualGame.currentDifference, 0) / -3600),
                         green: (max(actualGame.currentDifference, 0) / 3600),
                         blue: max(0, (360 - abs(actualGame.currentDifference))/360)))
-            }
-            HStack{
-                Button("Mute") {
-                    actualGame.voiceChat!.volume = 0
-                }
-                Button("Unmute") {
-                    actualGame.voiceChat!.volume = 1
-                }
             }
 //            VStack {
 //                if let totalOpponentAngle = actualGame.opponentGameData.deltaAngle {
